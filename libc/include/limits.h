@@ -60,23 +60,8 @@
 /* Many of the POSIX limits come from the kernel. */
 #include <linux/limits.h>
 
-/*
- * bionic always exposed these alternative names,
- * but clang's <limits.h> considers them GNU extensions,
- * and may or may not have defined them.
- */
-#ifndef LONG_LONG_MIN
-/** Non-portable synonym; use LLONG_MIN directly instead. */
-#define LONG_LONG_MIN LLONG_MIN
-#endif
-#ifndef LONG_LONG_MAX
-/** Non-portable synonym; use LLONG_MAX directly instead. */
-#define LONG_LONG_MAX LLONG_MAX
-#endif
-#ifndef ULONG_LONG_MAX
-/** Non-portable synonym; use ULLONG_MAX directly instead. */
-#define ULONG_LONG_MAX ULLONG_MAX
-#endif
+/** Maximum buffer size for getentropy(). */
+#define GETENTROPY_MAX 256
 
 /** Maximum number of positional arguments in a printf()/scanf() format string. */
 #define NL_ARGMAX 9
@@ -113,6 +98,12 @@
 #define SIZE_T_MAX ULONG_MAX
 /** Maximum value of a ssize_t. */
 #define SSIZE_MAX LONG_MAX
+
+/**
+ * POSIX 2024's name for NSIG.
+ * See the NSIG documentation for an explanation and warnings.
+ */
+#define NSIG_MAX 65
 
 /** Maximum number of bytes in a multibyte character. */
 #define MB_LEN_MAX 4
